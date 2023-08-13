@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0" />
+    <title>常见问题</title>
+</head>
+
+<style>
+    body {
+        background-color : #a0e6ff;
+        width: 700px;
+        margin: 0 auto;
+        user-select: none; /* Standard */
+    }
+
+    @media (max-width: 700px){
+        body {
+            width : 100%;
+        }
+    }
+
+    .container {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight:600;
+    }
+
+    .details_1 {
+        text-align: center; 
+        border: 4px dashed rgb(124, 0, 124);
+        border-radius: 10px;
+        margin: 20px 0px;
+    }
+
+    .details_1 summary{
+        color: rgb(0, 0, 0);
+        font-size: x-large;
+        background-color: rgb(0, 220, 18);
+        padding: 5px 0px;
+    }
+
+
+    .details_1_1 {
+        text-align: left; 
+        width: 90%; 
+        margin: 0 auto;
+    }
+    .details_1_1 h3{
+        margin: 13px 0px;
+    }
+    .details_1_1 p{
+        word-wrap: break-word;
+        text-indent: 2em;
+    }
+</style>
+
+<body>
+    <div class="container">
+
+        <div>
+            <div style="height: 1px;"></div>
+            <h1 style="text-align: center; margin-bottom: 10px;">命令模拟器常见疑问</h1>
+        </div>
+
+        <details class="details_1"><summary>账户答疑</summary>
+            <div class="details_1_1">
+                <h3>Q：什么是通行码和有效期？</h3>
+                <p>通行码是登录命令模拟器的凭据，通行码并不能自定义，只能通过后台生成6位随机码进行登录。</p>
+                <p>每个通行码有效期为2个月，届时通行码将会失效(账号并不会被注销)，用户无法正常登录。
+                   你需要在<a href="https://commandsimulator.great-site.net/forgot_pass.html">申领通行码</a>界面领取一个新的通行码。
+                   新的通行码将通过邮件发送至用户的邮箱。</p>
+            </div>
+        </details>
+
+        <details class="details_1"><summary>输入文字答疑</summary>
+            <div class="details_1_1">
+                <h3>Q：如何取消输入法的安全键盘模式？</h3>
+                <p>用户通常需要在<span style="color: red;">手机的系统设置</span>内关闭输入法的安全键盘模式，
+                    通常在设置中搜索<span style="color: red;">安全输入</span>即可搜索到安全输入的相关设置，关闭即可。</p>
+                <p><span style="color: red;">注意：如果用户在直播或录制视频中需要输入密码，关闭安全输入将极大威胁密码安全，因此用户需要权衡利弊。</span></p>
+            </div>
+            <div class="details_1_1">
+                <h3>Q：为什么输入法的复制粘贴不起作用或粘贴内容差别大？如何解决？</h3>
+                <p>因为选用的是tkinter作为UI模块创建的工具。tkinter是桌面端UI模块，因此对电脑的适配较为完全，而对移动端的适配就容易出现问题。</p>
+                <p><span style="color: rgb(25, 0, 255);">解决方法：</span>一些文字相关的操作，如果你需要执行复制，剪切，粘贴等操作，请使用软件最上方的绿色<span style="color: red;">功能按钮</span>执行相关文字操作。</p>
+            </div>
+        </details>
+
+        <details class="details_1"><summary>UI界面答疑</summary>
+            <div class="details_1_1">
+                <h3>Q：为什么我的UI显示的不完整？如何解决？</h3>
+                <p>因为每个手机的设计不同，屏幕上的像素坐标也会大不相同，tkinter在每个安卓设备上使用都会出现不一样的效果。</p>
+                <p><span style="color: rgb(25, 0, 255);">解决方法：</span>在Pydroid 3的主界面，点击左上角菜单，点击Setting，点击System，下滑至末尾，点击Tkinter: screen DPI，将DPI改为320或更小即可，依照自己设备效果选择最合适的DPI</p>
+            </div>
+        </details>
+
+    </div>
+</body>
+
+
+</html>
