@@ -20,7 +20,7 @@ function read_text() {
             while(start1 <= end1) {str1 += String.fromCharCode(start1);start1+=1;}
         }
     }
-    copyTextToClipboard(str1);
+    clipboard.copy(str1);
     set_timer("字符已复制到剪切板\n3秒后自动返回......");
 }
 
@@ -41,11 +41,46 @@ function set_timer(text1){
     }
 }
 
-async function copyTextToClipboard(text) {
-    try {
-    await navigator.clipboard.writeText(text);
-    console.log('文本已复制到剪贴板');
-    } catch (err) {
-    console.error('无法复制文本: ', err);
+var clipboard = function (window, document, navigator) {
+    var textArea, copy;
+
+    function isOS() {
+        return navigator.userAgent.match(/ipad|iphone/i);
     }
-}
+
+    function createTextArea(text) {
+        textArea = document.createElement('textArea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+    }
+
+    function selectText() {
+        var range, selection;
+
+        if (isOS()) {
+            range = document.createRange();
+            range.selectNodeContents(textArea);
+            selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            textArea.setSelectionRange(0, 999999);
+        } else {
+            textArea.select();
+        }
+    }
+
+    function copyToClipboard() {
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    }
+
+    copy = function copy(text) {
+        createTextArea(text);
+        selectText();
+        copyToClipboard();
+    };
+
+    return {
+        copy: copy
+    };
+}(window, document, navigator);
